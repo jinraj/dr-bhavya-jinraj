@@ -98,7 +98,6 @@ function Hero() {
     <section className="hero" id="home">
       <div className="hero-content">
         <span className="eyebrow">
-          <span className="eyebrow-line" />
           A MORE MINDFUL WAY TO WELLNESS
         </span>
 
@@ -135,7 +134,7 @@ function Hero() {
         <div className="hero-image">
           <div className="image-caption">
             <span>01 / A HOLISTIC APPROACH</span>
-            <span>Mind · Body · Balance</span>
+            {/* <span>Mind · Body · Balance</span> */}
           </div>
         </div>
         <div className="hero-stamp">
@@ -145,11 +144,11 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hero-bottom">
+      {/* <div className="hero-bottom">
         <span>AYURVEDA</span>
         <span>YOGA</span>
         <span>HOLISTIC WELLNESS</span>
-      </div>
+      </div> */}
     </section>
   );
 }
@@ -166,7 +165,7 @@ function About() {
           <div className="about-image" role="img"
             aria-label="Botanical wellness portrait placeholder" />
           <div className="image-note">
-            A PERSONALIZED APPROACH TO WELLBEING
+            BAMS, MD (Yoga) Scholar, PGD in Skin Aesthetics, Obesity Management, Tricology
           </div>
         </div>
 
@@ -321,7 +320,7 @@ function Contact() {
             <Phone size={19} />
             <span>
               <small>CALL / WHATSAPP</small>
-              Add contact number
+              8861323194
             </span>
             <ArrowUpRight size={17} />
           </a>
@@ -330,7 +329,7 @@ function Contact() {
             <Mail size={19} />
             <span>
               <small>EMAIL</small>
-              Add email address
+              bhavyajinraj@gmail.com
             </span>
             <ArrowUpRight size={17} />
           </a>
