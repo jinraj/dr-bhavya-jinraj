@@ -51,6 +51,26 @@ const services = [
   },
 ];
 
+const workExperience = [
+  { role: "COVID Medical Officer", organization: "Sanjaynagar PHC, Bengaluru" },
+  { role: "Ayurveda Consultant", organization: "Kempapura, Bengaluru" },
+  { role: "Assistant Medical Officer", organization: "S-Vyasa University, Bengaluru" },
+  { role: "Clinic Owner", organization: "Ayur Aesthetics Clinic, Malleswaram", period: "2024\u20132026" },
+  { role: "Cosmetology Consultant", organization: "Divine Aesthetics, Bengaluru" },
+  { role: "Online Ayurveda Consultant", current: true },
+];
+
+const certificates = [
+  { year: "2020", title: "MD", organization: "S-Vyasa University, Bengaluru" },
+  { year: "2024", title: "PG Diploma in Skin Aesthetics", organization: "Tulip International, Mumbai" },
+  { year: "2024", title: "PG Diploma in Obesity Management", organization: "Tulip International, Mumbai" },
+  { year: "2024", title: "PG Diploma in Trichology", organization: "Tulip International, Mumbai" },
+  { year: "2025", title: "PG Diploma in Cupping Therapy", organization: "Difa Ayurveda, Uttar Pradesh" },
+  { year: "2025", title: "PG Diploma in Ksharasutra", organization: "Difa Ayurveda, Uttar Pradesh" },
+  { year: "2024", title: "COSCON - 2nd International Congress Conference", organization: "Indian Society of Aesthetic Medicine, Delhi ? Attendee" },
+  { year: "2024", title: "Master Certificate in PMU", organization: "V-Wonder, Bengaluru" },
+];
+
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [
@@ -163,8 +183,8 @@ function About() {
               <span>Bachelor of Ayurvedic Medicine and Surgery</span>
             </div>
             <div>
-              <strong>MD (Yoga) Scholar</strong>
-              <span>Yoga studies</span>
+              <strong>MD (Yoga)</strong>
+              <span>S-Vyasa University, Bengaluru ? 2020</span>
             </div>
             <div>
               <strong>Postgraduate diplomas</strong>
@@ -176,33 +196,55 @@ function About() {
           </a>
         </div>
       </div>
-    </section>
-  );
-}
-
-
-function PracticeStats() {
-  return (
-    <section className="practice-stats section-padding" aria-labelledby="practice-stats-title">
-      <div className="practice-stats-heading">
-        <span className="eyebrow">A PRACTICE ROOTED IN PERSONALIZED CARE</span>
-        <h2 id="practice-stats-title">Experience and areas of focus.</h2>
+      <div className="about-experience" aria-label="Professional experience">
+        <dl className="experience-stats">
+          <div>
+            <dd>8</dd>
+            <dt>Years of experience</dt>
+          </div>
+          <div>
+            <dd>1,200+</dd>
+            <dt>Consultations completed</dt>
+          </div>
+          <div>
+            <dd>5</dd>
+            <dt>Postgraduate diplomas</dt>
+          </div>
+          <div>
+            <dd>15</dd>
+            <dt>Wellness workshops</dt>
+          </div>
+        </dl>
+        <div className="experience-details">
+          <section className="experience-column" aria-labelledby="work-experience-title">
+            <span className="eyebrow">WORK EXPERIENCE</span>
+            <h3 id="work-experience-title">Clinical and wellness practice</h3>
+            <div className="experience-list">
+              {workExperience.map((item) => (
+                <article className="experience-item" key={item.role}>
+                  {item.period && <span className="experience-period">{item.period}</span>}
+                  {item.current && <span className="experience-period">Currently working</span>}
+                  <strong>{item.role}</strong>
+                  {item.organization && <p>{item.organization}</p>}
+                </article>
+              ))}
+            </div>
+          </section>
+          <section className="experience-column" aria-labelledby="certificates-title">
+            <span className="eyebrow">CERTIFICATES &amp; ACCOMPLISHMENTS</span>
+            <h3 id="certificates-title">Education and continued learning</h3>
+            <div className="achievement-list">
+              {certificates.map((item) => (
+                <article className="achievement-item" key={item.title}>
+                  <span className="achievement-year">{item.year}</span>
+                  <strong>{item.title}</strong>
+                  <p>{item.organization}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
-      <dl className="practice-stats-grid">
-        <div className="practice-stat">
-          <dd>8</dd>
-          <dt>Years of experience</dt>
-        </div>
-        <div className="practice-stat">
-          <dd>500+</dd>
-          <dt>Consultations</dt>
-          <span className="stat-note">Sample figure · replace with confirmed total</span>
-        </div>
-        <div className="practice-stat">
-          <dd>3</dd>
-          <dt>Postgraduate diplomas</dt>
-        </div>
-      </dl>
     </section>
   );
 }
@@ -312,7 +354,6 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <PracticeStats />
         <Services />
         <Consultation />
         <Contact />
