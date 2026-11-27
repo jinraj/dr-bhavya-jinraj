@@ -67,9 +67,11 @@ const certificates = [
   { year: "2024", title: "PG Diploma in Trichology", organization: "Tulip International, Mumbai" },
   { year: "2025", title: "PG Diploma in Cupping Therapy", organization: "Difa Ayurveda, Uttar Pradesh" },
   { year: "2025", title: "PG Diploma in Ksharasutra", organization: "Difa Ayurveda, Uttar Pradesh" },
-  { year: "2024", title: "COSCON - 2nd International Congress Conference", organization: "Indian Society of Aesthetic Medicine, Delhi ? Attendee" },
+  { year: "2024", title: "Attended COSCON: 2nd International Congress Conference", organization: "Indian Society of Aesthetic Medicine, Delhi" },
   { year: "2024", title: "Master Certificate in PMU", organization: "V-Wonder, Bengaluru" },
 ];
+
+const certificateYears = [...new Set(certificates.map(({ year }) => year))];
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -163,7 +165,7 @@ function About() {
       <div className="about-grid">
         <div className="about-image-wrap">
           <img className="about-image" src={`${base}images/bhavyajinraj.png`} alt="Dr. Bhavya Jinraj" />
-          <div className="image-note">BAMS · MD (Yoga) Scholar</div>
+          <div className="image-note">BAMS · MD (Yoga)</div>
         </div>
         <div className="about-content">
           <span className="eyebrow">ABOUT DR. BHAVYA</span>
@@ -184,11 +186,11 @@ function About() {
             </div>
             <div>
               <strong>MD (Yoga)</strong>
-              <span>S-Vyasa University, Bengaluru ? 2020</span>
+              <span>S-Vyasa University, Bengaluru (2020)</span>
             </div>
             <div>
               <strong>Postgraduate diplomas</strong>
-              <span>Skin Aesthetics · Obesity Management · Trichology</span>
+              <span>Skin Aesthetics, Obesity Management, Trichology, Cupping Therapy and Ksharasutra</span>
             </div>
           </div>
           <a href="#consultation" className="text-link">
@@ -215,30 +217,50 @@ function About() {
             <dt>Wellness workshops</dt>
           </div>
         </dl>
-        <div className="experience-details">
-          <section className="experience-column" aria-labelledby="work-experience-title">
-            <span className="eyebrow">WORK EXPERIENCE</span>
-            <h3 id="work-experience-title">Clinical and wellness practice</h3>
-            <div className="experience-list">
-              {workExperience.map((item) => (
-                <article className="experience-item" key={item.role}>
-                  {item.period && <span className="experience-period">{item.period}</span>}
-                  {item.current && <span className="experience-period">Currently working</span>}
-                  <strong>{item.role}</strong>
-                  {item.organization && <p>{item.organization}</p>}
+        <div className="about-history">
+          <section className="career-section" aria-labelledby="work-experience-title">
+            <div className="history-heading">
+              <div>
+                <span className="eyebrow">WORK EXPERIENCE</span>
+                <h3 id="work-experience-title">A career in care</h3>
+              </div>
+              <span className="history-index">01 / PROFESSIONAL JOURNEY</span>
+            </div>
+            <div className="career-grid">
+              {workExperience.map((item, index) => (
+                <article className="career-card" key={item.role}>
+                  <div className="career-card-top">
+                    <span className="career-sequence">{String(index + 1).padStart(2, "0")}</span>
+                    {item.period && <span className="career-badge">{item.period}</span>}
+                    {item.current && <span className="career-badge career-badge-current">CURRENT</span>}
+                  </div>
+                  <h4>{item.role}</h4>
+                  {item.organization && <p className="career-organization">{item.organization}</p>}
                 </article>
               ))}
             </div>
           </section>
-          <section className="experience-column" aria-labelledby="certificates-title">
-            <span className="eyebrow">CERTIFICATES &amp; ACCOMPLISHMENTS</span>
-            <h3 id="certificates-title">Education and continued learning</h3>
-            <div className="achievement-list">
-              {certificates.map((item) => (
-                <article className="achievement-item" key={item.title}>
-                  <span className="achievement-year">{item.year}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.organization}</p>
+
+          <section className="learning-section" aria-labelledby="certificates-title">
+            <div className="history-heading">
+              <div>
+                <span className="eyebrow">CERTIFICATES &amp; ACCOMPLISHMENTS</span>
+                <h3 id="certificates-title">Education and continued learning</h3>
+              </div>
+              <span className="history-index">02 / PROFESSIONAL DEVELOPMENT</span>
+            </div>
+            <div className="education-groups">
+              {certificateYears.map((year) => (
+                <article className="education-year-group" key={year}>
+                  <h4 className="education-year">{year}</h4>
+                  <ul className="education-list">
+                    {certificates.filter((item) => item.year === year).map((item) => (
+                      <li key={item.title}>
+                        <strong>{item.title}</strong>
+                        <span>{item.organization}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>

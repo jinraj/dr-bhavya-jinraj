@@ -93,21 +93,33 @@ h1 em, h2 em { font-weight: 400; color: #83947c; }
 .doctor-credentials span { font-size: 13px; line-height: 1.6; color: var(--muted); }
 
 /* About experience */
-.about-experience { margin-top: clamp(64px, 8vw, 100px); }
+.about-experience { margin-top: clamp(52px, 7vw, 88px); }
 .experience-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; border-top: 1px solid #d7d8cc; border-bottom: 1px solid #d7d8cc; }
-.experience-stats div { display: flex; flex-direction: column; gap: 6px; padding: 24px 22px; border-right: 1px solid #d7d8cc; }
+.experience-stats div { display: flex; flex-direction: column; gap: 7px; padding: 24px clamp(14px, 2vw, 26px); border-right: 1px solid #d7d8cc; }
 .experience-stats div:first-child { border-left: 1px solid #d7d8cc; }
 .experience-stats dd { order: 0; margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(36px, 4vw, 52px); line-height: 1; }
-.experience-stats dt { order: 1; color: var(--green); font-size: 14px; }
-.experience-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 6vw, 72px); margin-top: 38px; }
-.experience-column { min-width: 0; }
-.experience-column h3 { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.25; margin: 13px 0 24px; }
-.experience-item, .achievement-item { position: relative; border-top: 1px solid #d7d8cc; padding: 18px 0 18px 18px; }
-.experience-item::before, .achievement-item::before { content: ""; position: absolute; left: 0; top: 24px; width: 7px; height: 7px; border-radius: 50%; background: #8a987e; }
-.experience-item span, .achievement-item .achievement-year { display: inline-flex; color: #687267; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 8px; }
-.achievement-item .achievement-year { color: #8a6942; font-weight: 600; }
-.experience-item strong, .achievement-item strong { display: block; color: var(--green); font-family: var(--serif); font-size: 18px; font-weight: 500; }
-.experience-item p, .achievement-item p { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.experience-stats dt { order: 1; color: var(--green); font-size: 14px; line-height: 1.5; }
+.about-history { display: grid; gap: clamp(52px, 7vw, 84px); margin-top: clamp(52px, 7vw, 84px); }
+.history-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 26px; }
+.history-heading .eyebrow { margin-bottom: 10px; }
+.history-heading h3 { font-size: clamp(30px, 3.3vw, 42px); line-height: 1.2; margin: 0; }
+.history-index { color: #8a6942; font-size: 11px; letter-spacing: 1.3px; white-space: nowrap; padding-bottom: 5px; }
+.career-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.career-card { display: flex; flex-direction: column; align-items: flex-start; min-height: 180px; padding: 22px; background: var(--ivory); border: 1px solid #dfded3; border-top: 2px solid var(--sage); }
+.career-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; margin-bottom: 18px; }
+.career-sequence { color: #8a6942; font-size: 11px; letter-spacing: 1.2px; }
+.career-badge { display: inline-flex; align-items: center; padding: 5px 9px; background: #e7eadf; color: var(--green); font-size: 10px; letter-spacing: .8px; }
+.career-badge-current { background: var(--green); color: white; }
+.career-card h4 { color: var(--green); font-family: var(--serif); font-size: 20px; font-weight: 500; line-height: 1.3; margin: 0 0 7px; }
+.career-organization { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0; }
+.education-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.education-year-group { padding: 21px 22px; background: var(--ivory); border: 1px solid #dfded3; }
+.education-year { margin: 0; padding-bottom: 12px; border-bottom: 1px solid #d7d8cc; color: #8a6942; font-family: var(--serif); font-size: 34px; font-weight: 400; line-height: 1; }
+.education-list { list-style: none; margin: 0; padding: 0; }
+.education-list li { display: grid; gap: 5px; padding: 14px 0; border-bottom: 1px solid #e5e3d9; }
+.education-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.education-list strong { color: var(--green); font-family: var(--serif); font-size: 16px; font-weight: 500; line-height: 1.4; }
+.education-list span { color: var(--muted); font-size: 12px; line-height: 1.5; }
 
 /* Services */
 .services-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 52px; }
@@ -201,11 +213,21 @@ h1 em, h2 em { font-weight: 400; color: #83947c; }
   .footer { padding: 42px 7% 22px; }
 }
 
+@media (max-width: 900px) {
+  .career-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .education-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .education-year-group:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
 @media (max-width: 560px) {
   .experience-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .experience-stats div:nth-child(-n+2) { border-bottom: 1px solid #d7d8cc; }
-  .experience-details { grid-template-columns: 1fr; gap: 38px; }
+  .history-heading { display: block; }
+  .history-index { display: inline-block; margin-top: 12px; }
+  .career-grid, .education-groups { grid-template-columns: 1fr; }
+  .education-year-group:last-child:nth-child(odd) { grid-column: auto; }
 }
+
 
 @media (max-width: 420px) {
   .brand { gap: 9px; }
